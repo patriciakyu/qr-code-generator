@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file, render_template
+from flask import Flask, request, send_file, send_from_directory
 import qrcode
 from io import BytesIO
 from PIL import Image, ImageDraw
@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return send_from_directory('.', 'index.html')
 
 @app.route('/generate-qr', methods=['POST'])
 def generate_qr():
